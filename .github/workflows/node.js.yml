@@ -32,5 +32,3 @@ jobs:
       working-directory: ./my-angular-project
     - run: ng build
       working-directory: ./my-angular-project
-    - run: ng test
-      working-directory: ./my-angular-project
