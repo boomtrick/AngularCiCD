@@ -28,6 +28,8 @@ jobs:
         cache: 'npm'
     - run: npm install -g @angular/cli
       working-directory: ./my-angular-project
+    - run: npm install
+      working-directory: ./my-angular-project
     - run: ng build
       working-directory: ./my-angular-project
     
