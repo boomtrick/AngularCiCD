@@ -36,3 +36,7 @@ jobs:
     
     - run: ls ./dist
       working-directory: ./my-angular-project
+    - name: test
+      uses: actions/action-js-test@main
+      with: 
+        image-version: 14.21-alpine-chromium
