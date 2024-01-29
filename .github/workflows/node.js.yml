@@ -26,7 +26,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    - run: npm install
+    - run: npm install -g @angular/cli
       working-directory: ./my-angular-project
     - run: ng build
       working-directory: ./my-angular-project
