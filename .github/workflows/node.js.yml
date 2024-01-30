@@ -73,9 +73,12 @@ jobs:
       run : |
         npm run lint
       working-directory: ./my-angular-project
-      
-    - name: Test code
-      uses: actions/action-js-test@main
-      with:
-        image-version: 14.21-alpine-chromium
-        
+
+    - name: Release version
+      id: release_version
+      run: |
+        if [[ ${{  github.ref }} =~ ^v.*]]; then
+          echo release-name="TESTING-${{ github.ref }}" >> $GITHUB_OUTPUT
+        else
+          echo release-name="TESTING-snapshot" >> $GITHUB_OUTPUT
+        fi
