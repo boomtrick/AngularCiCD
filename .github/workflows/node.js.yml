@@ -69,6 +69,10 @@ jobs:
         npm run build -- --configuration=production
       working-directory: ./my-angular-project
 
+    - name: Run test
+      run: npm test
+      working-directory: ./my-angular-project
+
     - name: Release version
       id: release_version
       run: |
