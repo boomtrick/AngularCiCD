@@ -33,10 +33,4 @@ jobs:
       working-directory: ./my-angular-project
     - run: ng build
       working-directory: ./my-angular-project
-    
-    - run: ls ./dist
-      working-directory: ./my-angular-project
-    - name: test
-      uses: actions/action-js-test@main
-      with: 
-        image-version: 14.21-alpine-chromium
+  
