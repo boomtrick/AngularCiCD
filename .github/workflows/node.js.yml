@@ -33,6 +33,7 @@ jobs:
       run: |
         echo "NPM Cache Dir: $(npm config get cache)"
         echo "npm_cache_dir=$(npm config get cache)" >> $GITHUB_OUTPUT
+      working-directory: ./my-angular-project
     - name: Cache npm modules
       id: cache-npm-modules
       uses: actions/cache@v3
@@ -59,9 +60,11 @@ jobs:
     - name: install dependencies
       if: (steps.cache-npm-modules.outputs.cache-hit != 'true') || (steps.cache.cache-node-modules.outputs.cache-hit != 'true')
       run : |
-        npm install
+        npm ci
+      working-directory: ./my-angular-project
       
     - name: Build App
       run: |
-        ng build
+        npm run build
+      working-directory: ./my-angular-project
         
