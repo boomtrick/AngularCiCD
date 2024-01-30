@@ -13,7 +13,7 @@ on:
 jobs:
   build:
 
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted,ubuntu-latest]
 
     strategy:
       matrix:
@@ -21,16 +21,16 @@ jobs:
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Use Node.js ${{ matrix.node-version }}
+    - name: Checkout
+      uses: actions/checkout@v3
+    - name: Setup Node
       uses: actions/setup-node@v3
       with:
-        node-version: ${{ matrix.node-version }}
+        node-version: 14
         cache: 'npm'
-    - run: npm install -g @angular/cli
-      working-directory: ./my-angular-project
-    - run: npm install
-      working-directory: ./my-angular-project
-    - run: ng build
-      working-directory: ./my-angular-project
+    - name: Get npm cache directory
+      id: npm-cache-dir
+      run: |
+        echo "NPM Cache Dir: $(npm config get cache)"
+        echo "npm_cache_dir=$(npm config get cache)" >> $GITHUB_OUTPUT
   
