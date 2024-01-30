@@ -68,4 +68,14 @@ jobs:
       run: |
         npm run build -- --configuration=production
       working-directory: ./my-angular-project
+
+    - name: Lint the build
+      run : |
+        npm run lint
+      working-directory: ./my-angular-project
+      
+    - name: Test code
+      uses: actions/action-js-test@main
+      with:
+        image-version: 14.21-alpine-chromium
         
