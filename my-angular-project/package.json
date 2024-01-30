@@ -7,7 +7,7 @@
     "build": "ng build --base-href /my-angular-project/",
     "deploy": "ng build --base-href /my-angular-project/",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test --watch=false --browsers=ChromeHeadless"
   },
   "private": true,
   "dependencies": {
