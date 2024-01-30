@@ -61,10 +61,11 @@ jobs:
       if: (steps.cache-npm-modules.outputs.cache-hit != 'true') || (steps.cache.cache-node-modules.outputs.cache-hit != 'true')
       run : |
         npm install -g @angular/cli
+        npm install
       working-directory: ./my-angular-project
       
     - name: Build App
       run: |
-        npm run build
+        npm run build -- --configuration=production
       working-directory: ./my-angular-project
         
