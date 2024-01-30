@@ -72,7 +72,7 @@ jobs:
     - name: Release version
       id: release_version
       run: |
-        if [[ ${{  github.ref }} =~ ^v.*]]; then
+        if [[ ${{  github.ref }} =~ ^v.* ]]; then
           echo release-name="TESTING-${{ github.ref }}" >> $GITHUB_OUTPUT
         else
           echo release-name="TESTING-snapshot" >> $GITHUB_OUTPUT
