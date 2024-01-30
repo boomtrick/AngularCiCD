@@ -60,7 +60,6 @@ jobs:
     - name: install dependencies
       if: (steps.cache-npm-modules.outputs.cache-hit != 'true') || (steps.cache.cache-node-modules.outputs.cache-hit != 'true')
       run : |
-        npm ci
         npm install -g @angular/cli
       working-directory: ./my-angular-project
       
