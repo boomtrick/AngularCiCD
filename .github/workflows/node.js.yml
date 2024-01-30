@@ -33,4 +33,30 @@ jobs:
       run: |
         echo "NPM Cache Dir: $(npm config get cache)"
         echo "npm_cache_dir=$(npm config get cache)" >> $GITHUB_OUTPUT
-  
+    - name: Cache npm modules
+      id: cache-npm-modules
+      uses: actions/cache@v3
+      env:
+        cache-npm-name: cache-npm-modules
+      with:
+        path: ${{steps.npm-cache-dir.outputs.npm_cache_dir}}
+        key: ${{ runner.os}}-build-${{ env.cache-npm-name}}-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-build-$${{ env.cache-npm-name }}-
+    - name: Cache node modules
+      id: cache-node-modules
+      uses: actions/cache@v3
+      env:
+        cache-node-name: cache-node-modules
+      with: 
+        path: node_modules
+        key: ${{ runner.os }}-build-${{ env.cache-node-name }}-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-build-${{ env.cache-node-name}}-
+          ${{ runner.os }}-build-
+          ${{ runner.os}}-
+
+    - name: Build App
+      run: |
+        npm run build -- --configuration=production
+        
