@@ -1,0 +1,22 @@
+{
+    "Variables": [
+      {
+        "Name": "thing",
+        "Value": "thang",
+        "Scope": {
+          "Environment": [
+            "dev1"
+          ]
+        }
+      },
+      {
+        "Name": "HostName",
+        "Value": "someDevTestHostName",
+        "Scope": {
+          "Environment": [
+            "DevTest"
+          ]
+        }
+      }
+    ]
+  }

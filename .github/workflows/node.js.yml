@@ -81,3 +81,12 @@ jobs:
         else
           echo release-name="TESTING-snapshot" >> $GITHUB_OUTPUT
         fi
+    - name: Set environment specific variables
+        uses: jnus/json-variables@4a442c701d13455259c65b315c7dce51d1c9edf7
+        with:
+            scope: dev1
+            configFile: '/.github/deployment_vars/non_prod.json'
+            secrets: '${{ toJson(secrets) }}'
+    - name: pshell
+      shell: pwsh
+      run: .\CiCd\Bamboo\Scripts\thing.ps1 ${{env.thing}}
